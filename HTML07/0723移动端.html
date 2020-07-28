@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>移动端</title>
+    <link rel="stylesheet" href="dist/css/swiper.min.css">
+    <link rel="stylesheet" href="../CSS/0723移动端.min.css">
+
+</head>
+<body>
+<!--外面套一个盒子用于控制当前页面的最大宽度，房子把做好的页面
+在PC端预览的时候满屏展示，这样字体和盒子大小等被肆意拉伸-->
+<div class="mainBox">
+    <section class="loadingBox">
+        <div class="title">
+            <h1>LUHAN</h1>
+            <h2>前端简历</h2>
+        </div>
+        <div class="back">
+            <div class="grow"></div>
+        </div>
+    </section>
+    <section class="callBox">
+        <div class="top">
+            <h1>自我介绍</h1>
+        </div>
+        <div class="touch">
+            <div class="left"><img src="Img/挂断.png" height="64" width="64"/></div>
+            <div class="right">
+                <div class="out">
+                    <img src="Img/接听.png" height="64" width="64"/>
+                </div>
+            </div>
+            <audio></audio>
+        </div>
+    </section>
+    <section class="callingBox">
+        <div class="top">
+            <h1>自我介绍ing……</h1>
+            <h2>00:00</h2>
+        </div>
+        <div class="close"></div>
+    </section>
+    <section class="chat">
+        <ul class="list">
+            <li class="other">
+                <i class="arrow"></i>
+                <img src="Img/lh1.jpg" height="100" width="100"/>
+                我们是年轻的太阳升起，当汗水沸腾起来
+<!--                <img src="Img/h1.jpg" height="1163" width="1163"/>-->
+            </li>
+            <li class="my">
+                <i class="arrow"></i>
+                <img src="Img/lh2.jpg" height="100" width="100"/>
+                <!--                <img src="Img/h1.jpg" height="1163" width="1163"/>-->
+                时差（On call） - 鹿晗
+                I don't believe
+                我们的故事
+                就只能走到这里
+                你是我命中注定 yeah
+                忘不掉的声音
+                Ooh
+                我的双脚像踩着沙
+                陷入了有你的那个仲夏
+            </li>
+            <li class="other">
+                <i class="arrow"></i>
+                <img src="Img/lh1.jpg" height="100" width="100"/>
+                <!--                <img src="Img/h1.jpg" height="1163" width="1163"/>-->
+            </li>
+            <li class="my">
+                <i class="arrow"></i>
+                <img src="Img/lh2.jpg" height="100" width="100"/>
+                <!--                <img src="Img/h1.jpg" height="1163" width="1163"/>-->
+            </li>
+            <li class="other">
+                <i class="arrow"></i>
+                <img src="Img/lh1.jpg" height="100" width="100"/>
+                <!--                <img src="Img/h1.jpg" height="1163" width="1163"/>-->
+            </li>
+            <div class="down">
+                <div class="speak"></div>
+                <div class="text">打字区域</div>
+                <div class="smile"></div>
+                <div class="addSth"></div>
+            </div>
+        </ul>
+    </section>
+    <section class="marginCube">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box1">1</div>
+                <div class="swiper-slide box2">2</div>
+                <div class="swiper-slide box3">3</div>
+                <div class="swiper-slide box4">4</div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+//<!--根据当前的设备的宽高自行计算px对应的rem-->
+//为了防止冲突使用闭包
+~function () {
+    let computedREM=function () {
+        let wid=document.documentElement.clientWidth;
+        let Gwid=640;
+        if(wid>Gwid){
+           document.documentElement.style.fontSize=Gwid+"px";
+        }
+        document.documentElement.style.fontSize=wid/Gwid*100+"px";
+    };
+    computedREM();
+    window.addEventListener("resize",computedREM);
+//    监听窗口发生变化时也会对窗口的大小对内容进行调整
+}();
+</script>
+<script src="../zepto/zepto.min.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/fastclick/1.0.6/fastclick.js"></script>-->
+<script src="../zepto/fastclick.js"></script>
+<script src="dist/js/swiper.min.js"></script>
+<script src="../JS07/0723移动端.js"></script>
+</body>
+</html>

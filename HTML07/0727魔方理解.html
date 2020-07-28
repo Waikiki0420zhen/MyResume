@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>魔方</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        :root body{
+            height: 100%;
+        /*    全局变量*/
+        }
+        body{
+            perspective: 2000px;
+            transform-style: preserve-3d;
+        /*    设置透视&设置3D效果*/
+        }
+        .content{
+            width: 300px;
+            height:300px;
+            position: absolute;
+            left:calc(50% - 150px);
+            top:50%;
+            /*transform: translateY(-50%);*/
+            transform-style: preserve-3d;
+            /*animation: move 10s linear infinite;*/
+        }
+        @keyframes move {
+            0%{
+                transform: rotateY(0deg) rotate(-360deg);
+            }
+            33%{
+                transform: rotateY(180deg) rotateX(-90deg);
+            }
+            66%{
+                transform: rotateY(270deg) rotateX(180deg);
+            }
+            100%{
+                transform: rotateY(360deg) rotateX(360deg);
+            }
+        }
+        .content1,.content2,.content3,.content4,.content5,.content6{
+            width: 100%;
+            height:100%;
+            position: absolute;
+            line-height: 300px;
+            text-align: center;
+            font-size: 24px;
+            color: #555555;
+        }
+        .content1{
+            transform: translateZ(150px);
+            background: #ca3535;
+        }
+        .content2{
+            transform: translateZ(-150px) rotateY(-180deg);
+            background: #D2FFD2;
+        }
+        .content3{
+            transform: translateY(-150px) rotateX(90deg);
+            background: #269CE9;
+        }
+        .content4{
+            transform: translateY(150px) rotateX(-90deg);
+            background: #D15FEE;
+        }
+        .content5{
+            transform: translateX(-150px) rotateY(-90deg);
+            background: #e6e91d;
+        }
+        .content6{
+            transform: translateX(150px) rotateY(90deg);
+            background: #ee5f5b;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="content1">1</div>
+    <div class="content2">2</div>
+    <div class="content3">3</div>
+    <div class="content4">4</div>
+    <div class="content5">5</div>
+    <div class="content6">6</div>
+</div>
+<script>
+    (function(){
+        // var btn = document.getElementsByClassName('btn')[0];
+        var box = document.getElementsByClassName('content')[0];
+        //鼠标拖动效果
+        var xN = 10, yN = 15;
+        document.addEventListener('mousedown',function(e){
+            e.preventDefault();
+            //阻止默认行为
+            e.stopPropagation();
+            //阻止默认行为
+            var x = e.clientX;
+            var y = e.clientY;
+            document.addEventListener('mousemove',move);
+            document.addEventListener('mouseup', up);
+            function move(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var x1 = e.clientX;
+                var y1 = e.clientY;
+                xN += (x1 - x)*0.04;
+                yN += (y1 - y)*0.04;
+                box.style.transform = 'translateZ(-150px) rotateY(' + xN + 'deg) rotateX(' + -yN + 'deg)';
+            }
+            function up(){
+                document.removeEventListener('mousemove', move);
+            }
+        })
+    })()
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+body{
+    --boxHeight: 300px;
+/*    "--"CSS定义变量;var()函数用于调用定义的变量;calc()函数用于
+简单来说就是CSS3中新增的一个函数，calculate（计算）的缩写。用于动态计算宽/高，你可以使用calc()给元素的各个属性设置值【margin、border、padding、font-size】等，
+calc()语法
+calc的语法就是简单的四则运算，
+使用“+”、“-”、“*” 和 “/”四则运算；
+可以使用百分比、px、em、rem等单位；
+可以混合使用各种单位进行计算；
+表达式中有“+”和“-”时，其前后必须要有空格，如"width: calc(12%+5em)"这种没有空格的写法是错误；
+表达式中有“*”和“/”时，其前后可以没有空格，但建议留有空格。
+浏览器兼容性：
+浏览器对calc()的兼容性还算不错，在IE9+、FF4.0+、Chrome19+、Safari6+都得到较好支持，同样需要在其前面加上各浏览器厂商的识别符，不过可惜的是，移动端的浏览器还没仅有“firefox for android 14.0”支持.
+calc()的用途
+主要用于计算不确定值，例如一个外边距为10px,宽度为100%的元素，这种情况我们怎么设置呢？如果设置了
+width: 100%;
+margin: 10px;
+复制代码
+你可以看出这个box已经溢出了，那么怎么解决呢？就可以用calc函数了。
+
+width: 800px;
+width: calc(100% - (10 *2)px);
+margin: 10px;
+vw和vh是什么？
+vm、vh、vmin、vmax是一种视窗单位，也是相对单位。它相对的不是父节点或者页面的根节点。而是由视窗（Viewport）大小来决定的，单位 1，代表类似于 1%。 视窗(Viewport)是你的浏览器实际显示内容的区域—，换句话说是你的不包括工具栏和按钮的网页浏览器。
+
+具体描述如下：
+
+vw：视窗宽度的百分比（1vw 代表视窗的宽度为 1%）
+vh：视窗高度的百分比
+vmin：取当前Vw和Vh中较小的那一个值
+vmax：取当前Vw和Vh中较大的那一个值
+PX、EM、REM、%、VW、VH单位之间的区别
+1 、px
+px就是pixel（像素）的缩写，相对长度单位，相对于屏幕分辨率。
+2、em
+参考物是父元素的font-size，具有继承的特点。浏览器默认字体是16px，整个页面内1em不是一个固定的值。
+字体大小同样都是1.5em，但是效果却截然不同，按照W3C提供的公式，我们可以计算下： class为id1的div字体大小继承自父元素body：16px*1.5em = 24px class为id2的div字体大小继承自父元素id1：24px*1.5em = 36px class为id3的div字体大小继承自父元素id2：36px*1.5em = 54px
+3、rem
+rem是CSS3新增的一个相对单位，但相对的只是HTML根元素。通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。
+4、%
+% 百分比，相对长度单位，相对于父元素的百分比值
+元素宽高与字体大小使用区别：
+（1）尽量使用相对尺寸单位
+使用相对尺寸单位计量，则在调整页面的布局的时候，不需要遍历所有的内部DOM结构，重新设置内部子元素的尺寸大小。如果是随着父容器或者是整体页面布局而改变尺寸，则使用%更好，如元素的高度和宽度设置。
+（2）字体尺寸尽量使用em、rem
+为了字体大小的可维护性和伸缩性，推荐使用em，如果存在3层以及3层以上的字体相对尺寸的设置，可以考虑使用rem。
+vh和vw
+vh和vw相对于视口的高度和宽度， 1vh 等于1/100的视口高度，1vw 等于1/100的视口宽度 比如：浏览器高度900px，宽度为750px, 1 vh = 900px/100 = 9 px，1vw = 750px/100 = 7.5 px， 很容易实现与同屏幕等高的框。
+calc + vm 计算宽度
+width: 800px;
+ // fallback for b
+    width: -moz-calc(100vm - (2 * 10)px);
+    width: -webkit-calc(100vm -(2 * 10)px);
+    width:calc(100vm-(2*10)px)
+*/
+}
+.magic-cube{
+    width: 300px;
+    height:300px;
+    left: 50%;
+    top:50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    /*--boxHeight:300px;*/
+}
+.cube{
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    /*使被转换的子元素保留其 3D 转换：*/
+    /*transform-origin: 10% 10%;*/				/*定义了观察者的视角相对于显示元素的位置*/
+    /*perspective: 500px;*/					/*设置用户与元素3d空间Z平面之间的距离*/
+    backface-visibility: hidden;                        /*定义当元素不面向屏幕时隐藏*/
+    transform: rotateY(45deg) rotateX(-45deg);
+}
+.cube ul{
+    display: flex;
+    /*开启弹性布局*/
+    flex-wrap: wrap;
+/*   当一行盛不下时允许换行*/
+    justify-content: space-between;
+    /*块与块之间留有相等间距，与外层容器不留间距*/
+}
+/*设置每个魔方的小块儿的样式*/
+.cube ul li{
+    height: calc(calc(100% / 3) - 1px);
+/*   calc用于动态计算数值 注意在使用四则时需要添加空格*/
+    width: calc(calc(100% / 3) - 1px);
+    text-align: center;
+    /*line-height: calc(calc(100% / 3) - 1px);*/
+    line-height: 99px;
+    border-radius: 5px;
+    list-style: none;
+    font-size:24px;
+}
+.cube .front{
+    transform: translateZ(150px);
+}
+.cube .front li{
+    background: #ee5f5b;
+}
+.cube .after{
+    transform: translateZ(-150px) translateY(calc(var(--boxHeight)* -1)) rotateY(180deg);
+}
+.cube .after li{
+    background: #ee8439;
+}
+.cube .top{
+    transform: translateZ(-300px) rotateX(90deg);
+}

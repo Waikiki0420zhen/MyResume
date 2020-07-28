@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swiper插件</title>
+    <link rel="stylesheet" href="dist/css/swiper.min.css">
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+        }
+        html,body{
+            height: 100%;
+            position: relative;
+        }
+        .swiper-container{
+            position: absolute;
+            width: 700px;
+            height: 500px;
+            left:50%;
+            top:50%;
+            margin-left: -350px;
+            margin-top: -250px;
+        }
+        .swiper-slide{
+            line-height: 500px;
+            text-align: center;
+            /*display: flex;*/
+        }
+        .box1{
+            /*display: block;*/
+            background: #ee5f5b;
+
+        }
+        .box2{
+            /*display: block;*/
+            background: #D15FEE;
+        }
+        .box3{
+            /*display: block;*/
+            background: #269CE9;
+        }
+    </style>
+</head>
+<body>
+<!--只需按照官网的步骤走即可https://www.swiper.com.cn/-->
+<!--
+步骤一：先导入插件==》此处需要导入两个插件先导入JS插件再导入Swiper的css插件
+
+-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide box1">Slide 1</div>
+        <div class="swiper-slide box2">Slide 2</div>
+        <div class="swiper-slide box3">Slide 3</div>
+    </div>
+</div>
+<script src="dist/js/swiper.min.js"></script>
+<script>
+    let sw=new Swiper(".swiper-container",{
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+        //    用户操作自动的移动的物体时如果是true会停止自动如果是false则用户操作后还会继续自动移动
+        },
+        loop:true,
+        // effect:"cube",
+        // // cube:{
+        // //     shadowOffset:20px,
+        // //
+        // // }
+        effect: 'cube',
+        grabCursor: true,
+        cubeEffect: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94,
+        },
+    });
+
+</script>
+</body>
+</html>

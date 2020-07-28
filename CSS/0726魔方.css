@@ -1,0 +1,81 @@
+body{
+    perspective: 2000px;
+/*    给body添加后会发现转换的时候近大远小perspective透视值越小透视越多会进入到魔方中*/
+}
+.nine{
+    width: 300px;
+    /*margin:50px auto;*/
+    transform-style: preserve-3d;
+/*    给操作元素设置3D变形效果*/
+    transition: 3s;
+/*    设置过渡*/
+/*    transform: scale(0.6) rotateX(-30deg) rotateY(30deg);*/
+    /*由于旋转的话他会变大所以此时设置缩放同时设置显示的初始显示的位置*/
+    position: relative;
+    animation: change 3s linear infinite;
+    /*perspective: 2000px;*/
+}
+div{
+    height: 300px;
+    width: 300px;
+    margin: 50px auto;
+}
+.box1{
+    position: absolute;
+    background: #ee5f5b;
+    transform: translateZ(150px);
+    top:0;
+}
+.box2{
+    position: absolute;
+    transform:rotateY(90deg) translateZ(150px);
+    top:0;
+    background: #269CE9;
+}
+.box3{
+    position: absolute;
+    top:0;
+    background: #5CB85C;
+    transform: rotateX(90deg) translateZ(150px);
+}
+.box4{
+    position: absolute;
+    top:0;
+    background: #0088bb;
+    transform: rotateY(180deg) translateZ(150px);
+}
+.box5{
+    position: absolute;
+    top:0;
+    background: #e6e91d;
+    transform: rotateX(-90deg) translateZ(150px);
+}
+.box6{
+    position: absolute;
+    top:0;
+    background: #eaeaea;
+    transform: rotateY(-90deg) translateZ(150px);
+}
+.nine:hover{
+    /*transform:translate3d(0px,0px,100px) rotate3d(360,360,360,360deg);*/
+    /*transform:rotate3d(360,360,360,360deg);*/
+
+    animation-play-state: paused;
+/*    一直移动当鼠标移进去停止*/
+}
+
+@keyframes change {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+        transform: rotateX(120deg) rotateY(240deg);
+    }
+    66% {
+        transform: rotateX(240deg) rotateY(480deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(720deg)
+    }
+}
+

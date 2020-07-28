@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Box</title>
+    <style>
+        html{
+            font-size: 100px;
+        }
+        html.box{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 4rem;
+            height: 4rem;
+            background: #D2FFD2;
+            margin:  20px auto;
+            position: relative;
+        }
+        .box>i{
+            position: relative;
+            top:0.2rem;
+            width: 0.2rem;
+            height: 0.2rem;
+            background: #D2FFD2;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <i style="height: 0.2rem;width: 0.2rem;background: #D2FFD2"></i>
+</div>
+<script src="../zepto/zepto.min.js"></script>
+<script src="../zepto/fastclick.js"></script>
+<script src="../JS07/0725移动端touch.js"></script>
+</body>
+</html>
